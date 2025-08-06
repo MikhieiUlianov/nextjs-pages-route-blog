@@ -1,6 +1,17 @@
 import AllPosts from "@/components/posts/all-posts";
-import { DUMMY_POSTS } from "..";
+import { getFeaturedPosts } from "@/lib/posts-util";
+import { PostFileType } from "@/lib/posts-util";
 
-export default function AllPostsPage() {
-  return <AllPosts posts={DUMMY_POSTS} />;
+export default function AllPostsPage({ posts }: { posts: PostFileType[] }) {
+  return <AllPosts posts={posts} />;
+}
+
+export function getStaticProps() {
+  const featuredPosts = getFeaturedPosts();
+
+  return {
+    props: {
+      posts: featuredPosts,
+    },
+  };
 }

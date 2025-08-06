@@ -13,7 +13,7 @@ type PostMetaData = {
   isFeatured: boolean;
 };
 
-type PostFileType = PostMetaData & {
+export type PostFileType = PostMetaData & {
   slug: string;
   content: string;
 };
