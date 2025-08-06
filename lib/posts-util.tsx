@@ -17,15 +17,16 @@ export type PostFileType = PostMetaData & {
   slug: string;
   content: string;
 };
-function getPostData(fileName: string): PostFileType {
-  const filePath = path.join(postsDirectory, fileName);
-  //readFileSync will block for loop, until we parse that data
+
+export function getPostsFiles() {
+  return fs.readdirSync(postsDirectory);
+}
+
+export function getPostData(postIdentifier: string): PostFileType {
+  const postSlug = postIdentifier.replace(/\.md$/, "");
+  const filePath = path.join(postsDirectory, `${postSlug}.md`);
   const fileContent = fs.readFileSync(filePath, "utf-8");
-  //returns an object with metadata (data) and a content (content).
-  //  Content : The actual content, the markup text as a string
   const { data, content } = matter(fileContent);
-  //removes the file extension
-  const postSlug = fileName.replace(/\.md$/, "");
 
   const postData = {
     slug: postSlug,
@@ -38,7 +39,7 @@ function getPostData(fileName: string): PostFileType {
 
 export function getAllPosts() {
   //return an array of all file names
-  const postFiles = fs.readdirSync(postsDirectory);
+  const postFiles = getPostsFiles();
   const allPosts = postFiles.map((postFile) => {
     return getPostData(postFile);
   });
