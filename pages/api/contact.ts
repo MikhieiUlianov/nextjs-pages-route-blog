@@ -32,10 +32,9 @@ export default async function handler(
     };
 
     let client;
+    const connectionString = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_clustername}.ybqit5w.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority&appName=Cluster0`;
     try {
-      client = await MongoClient.connect(
-        "mongodb+srv://mikh:wrihnJumnhRf5d0u@cluster0.ybqit5w.mongodb.net/my-site?retryWrites=true&w=majority&appName=Cluster0"
-      );
+      client = await MongoClient.connect(connectionString);
     } catch (error) {
       res.status(500).json({ message: "Could not connect to database." });
       return;
