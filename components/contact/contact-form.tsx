@@ -27,7 +27,7 @@ export default function ContactForm() {
       message: enteredMessage,
     };
 
-    fetch("/api/contacts", {
+    fetch("/api/contact", {
       method: "POST",
       body: JSON.stringify(enteredCredentials),
       headers: {
@@ -37,25 +37,26 @@ export default function ContactForm() {
   }
 
   return (
-    <section className={classes.cotact}>
-      <h1>How can i help you?</h1>
-      <form onSubmit={sendMessageHandler} className={classes.form}>
+    <section className={classes.contact}>
+      <h1>How can I help you?</h1>
+      <form className={classes.form} onSubmit={sendMessageHandler}>
         <div className={classes.controls}>
           <div className={classes.control}>
             <label htmlFor="email">Your Email</label>
-            <input ref={email} type="email" id="email" required />
+            <input type="email" id="email" required ref={email} />
           </div>
           <div className={classes.control}>
             <label htmlFor="name">Your Name</label>
-            <input ref={name} type="text" id="name" required />
+            <input type="text" id="name" required ref={name} />
           </div>
-          <div className={classes.control}>
-            <label htmlFor="message">Your Message</label>
-            <textarea ref={message} id="message" rows={5} required />
-          </div>
-          <div className={classes.actions}>
-            <button>Send Message</button>
-          </div>
+        </div>
+        <div className={classes.control}>
+          <label htmlFor="message">Your Message</label>
+          <textarea id="message" rows={5} required ref={message}></textarea>
+        </div>
+
+        <div className={classes.actions}>
+          <button>Send Message</button>
         </div>
       </form>
     </section>
