@@ -14,7 +14,7 @@ function Hero() {
           priority
         />
       </div>
-      <h1>Hi, I'm Max</h1>
+      <h1>Hi, I&apos;m Max</h1>
       <p>
         I blog about web development - especially frontend frameworks like
         Angular or React.

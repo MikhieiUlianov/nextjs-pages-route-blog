@@ -9,7 +9,7 @@ function HomePage({ posts }: { posts: PostFileType[] }) {
   return (
     <Fragment>
       <Head>
-        <title>Max' Blog</title>
+        <title>Max&apos; Blog</title>
         <meta
           name="description"
           content="I post about programming and web development."

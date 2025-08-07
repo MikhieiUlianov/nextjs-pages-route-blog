@@ -71,9 +71,12 @@ export default function ContactForm() {
       setEnteredName("");
       setEnteredEmail("");
       setEnteredMessage("");
-    } catch (error: any) {
-      setRequestError(error.message || "Something went wrong.");
-      setRequestStatus("error");
+    } catch (error) {
+      if (error instanceof Error) {
+        setRequestError(error.message || "Something went wrong.");
+      } else {
+        setRequestError("Something went wrong.");
+      }
     }
   }
 
