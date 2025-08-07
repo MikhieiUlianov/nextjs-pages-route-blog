@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import { MongoClient } from "mongodb";
 
-type MessageType = {
+export type MessageType = {
   name: string;
   email: string;
   message: string;
